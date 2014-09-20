@@ -1,0 +1,15 @@
+{
+    "name": "konstantin-kuklin/hs-benchmarks-php",
+    "license": "MIT",
+    "type": "benchmark",
+    "autoload": {
+        "classmap": [
+            "src/Analyzer"
+        ]
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "konstantin-kuklin/handlersocket-library": "dev-master",
+        "tz-lom/hsphp": "dev-master"
+    }
+}
