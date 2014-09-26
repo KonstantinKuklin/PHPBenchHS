@@ -6,9 +6,21 @@
 namespace Analyzer\HandlerSocketLibrary;
 
 use Analyzer\AbstractHandlerSocketLibraryJob;
+use HS\Component\Comparison;
 
 class InsertBatchBench extends AbstractHandlerSocketLibraryJob
 {
+    /**
+     * @param bool $isWriter
+     */
+    public function preJob($isWriter)
+    {
+        parent::preJob($isWriter);
+        // remove all data
+        $this->getClient()->deleteByIndex($this->getIndexId(), Comparison::MORE, array(0), 90000, 0);
+        $this->getClient()->getResultList();
+    }
+
     public function run()
     {
         $rows = $this->getRows();
@@ -17,7 +29,7 @@ class InsertBatchBench extends AbstractHandlerSocketLibraryJob
         $list = array();
 
         for ($i = 1000, $to = $rows + 1000; $i < $to; $i++) {
-            $list[] = array($to, rand(0, 9));
+            $list[] = array($to + $i, rand(0, 9));
         }
         $this->getClient()->insertByIndex($indexId, $list);
         $this->getClient()->getResultList();

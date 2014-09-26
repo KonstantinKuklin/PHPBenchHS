@@ -15,7 +15,7 @@ class TextSelectBench extends AbstractHandlerSocketLibraryJob
         $indexId = $this->getIndexId();
 
         for ($i = 0; $i < $rows; $i++) {
-            $this->getClient()->text(sprintf("%d    =   1   1", $indexId), 'HS\Query\SelectQuery');
+            $this->getClient()->text(sprintf("%d\t=\t1\t105\t1\t0", $indexId), 'HS\Query\SelectQuery');
         }
         $this->getClient()->getResultList();
     }
