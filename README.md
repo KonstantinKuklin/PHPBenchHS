@@ -5,12 +5,10 @@ PHPBenchHS provide functional to benchmark different php library which implement
 
 Installation
 ------------
-First of all you need to download composer.
-
-Download this repo.
-
-Execute composer install.
-
+- Download and install https://code.google.com/p/php-handlersocket/
+- Download composer
+- Download this repo.
+- Execute composer install.
 
 How to use
 ------------
