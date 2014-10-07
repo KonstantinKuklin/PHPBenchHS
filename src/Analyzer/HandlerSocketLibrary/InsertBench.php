@@ -27,10 +27,8 @@ class InsertBench extends AbstractHandlerSocketLibraryJob
         $indexId = $this->getIndexId();
 
         for ($i = 1000, $to = $rows + 1000; $i < $to; $i++) {
-            $this->getClient()->insertByIndex($indexId, array(array($to + $i, 1)));
+            $this->getClient()->insertByIndex($indexId, array($to + $i, 1))->execute();
         }
-
-        $this->getClient()->getResultList();
     }
 
     /**

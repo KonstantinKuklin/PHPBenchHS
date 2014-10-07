@@ -26,12 +26,9 @@ class InsertBatchBench extends AbstractHandlerSocketLibraryJob
         $rows = $this->getRows();
         $indexId = $this->getIndexId();
 
-        $list = array();
-
         for ($i = 1000, $to = $rows + 1000; $i < $to; $i++) {
-            $list[] = array($to + $i, rand(0, 9));
+            $this->getClient()->insertByIndex($indexId, array($to + $i, rand(0, 9)));
         }
-        $this->getClient()->insertByIndex($indexId, $list);
         $this->getClient()->getResultList();
     }
 
